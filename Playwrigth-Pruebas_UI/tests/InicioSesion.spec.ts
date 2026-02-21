@@ -17,7 +17,7 @@ test('UI-021 Inicio de sesión credenciales validas', async ({ page }) => {
 test('UI-022 Inicio de sesión con usuario incorrecto', async ({ page }) => {
   await page.goto('https://thinking-tester-contact-list.herokuapp.com/')
   const loginPage = new LoginPage(page)
-  await loginPage.login('diana123@fake.com', 'myPassword')
+  await loginPage.login('diana123*@fake.com', 'myPassword')
   await expect(page.locator('//*[@id="error"]')).toBeVisible();
 });
 

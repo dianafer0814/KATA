@@ -64,11 +64,11 @@ test('API-014 Validar la actualizacion de un usuario', async({request})=> {
 
     const userApi = new CreateUserApi(request);
     //creacion del usuario
-    await userApi.createUser('Tina','Enciso',`Tina1@fake.com`, 'myPassword');//cambiar el correo
+    await userApi.createUser('Tina','Enciso',`TINA${Date.now()}@fake.com`, 'myPassword');//cambiar el correo
     //validar el consumo del token
     console.log('TOKEN:', userApi.token);
     //consumo del metodo patch
-    const response = await userApi.patchMe('Clara','Enciso Fuentes','tina12@fake.com','cv1247*');//cambiar el correo
+    const response = await userApi.patchMe('Clara','Enciso Fuentes','tinaenciso1@fake.com','cv1247*');//cambiar el correo
     //validacion del codigo de respuesta
     expect(response.status()).toBe(200);
     //imprimir respuesta
@@ -83,11 +83,11 @@ test('API-015 Validar la actualizacion del correo de un usuario', async({request
 
     const userApi = new CreateUserApi(request);
     //creacion del usuario
-    await userApi.createUser('Mario','Garcia','Marioj2@fake.com', 'myPassword');//cambiar el correo
+    await userApi.createUser('Mario','Garcia',`mario${Date.now()}@fake.com`, 'myPassword');//cambiar el correo
     //validar el token
     console.log('TOKEN:', userApi.token);
     //consumo del metodo patch
-    const response = await userApi.patchMe('Mario','Garcia','Mario1@fake.com','myPassword');//cambiar el correo
+    const response = await userApi.patchMe('Mario','Garcia','Mario1234@fake.com','myPassword');//cambiar el correo
     //validacion del codigo de respuesta
     expect(response.status()).toBe(400);
     //imprimir respuesta
@@ -135,7 +135,7 @@ test('API-017 Validar el cierre de sesion de un usuario logeado',async({request}
     //generacion del token
     console.log('TOKEN:', userApi.token);
     
-    //consumo del metodo get
+    //consumo del metodo post
     const responseLogOut = await userApi.LogOut();
     
     expect(responseLogOut.status()).toBe(200);
@@ -151,7 +151,7 @@ test('API-018 Validar la eliminacion de un usuario',async({request})=>{
     //generacion del token
     console.log('TOKEN:', userApi.token);
     
-    //consumo del metodo get
+    //consumo del metodo delete
     const responseDeleteUser = await userApi.deleteUser();
     
     expect(responseDeleteUser.status()).toBe(200);

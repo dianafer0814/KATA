@@ -6,7 +6,7 @@ test('UI-011 Registro exitoso con datos válidos', async ({ page }) => {
   await page.goto('https://thinking-tester-contact-list.herokuapp.com/');
   
   const registerPage = new RegisterPage(page)
-  await registerPage.registerUserPage('Silvana Maria', 'Andrade', 'andrade12345@fake.com', 'fre1287');
+  await registerPage.registerUserPage('Silvana Maria', 'Andrade', 'andradeSm8@fake.com', 'fre1287');
 
   await expect(page.locator('//h1[normalize-space()=\'Contact List\']')).toBeVisible();
 });
